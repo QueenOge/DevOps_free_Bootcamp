@@ -46,7 +46,7 @@ variable "instance_names" {
 resource "aws_instance" "ec2" {
   count                  = length(var.user_data_scripts)
   ami                    = data.aws_ami.ubuntu.id
-  key_name               = "MYLABKEY" # Change key name as per your setup
+  key_name               = "ESTHER" # Change key name as per your setup
   instance_type          = var.instance_type[count.index]
   user_data              = file(var.user_data_scripts[count.index])
   vpc_security_group_ids = [aws_security_group.TerraBox.id]
