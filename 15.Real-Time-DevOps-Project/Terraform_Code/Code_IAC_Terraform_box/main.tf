@@ -63,7 +63,7 @@ resource "aws_instance" "ec2" {
 # Separate EC2 Instance for Terraform with IAM Profile and Folder Copy
 resource "aws_instance" "terraform_vm" {
   ami                    = data.aws_ami.ubuntu.id
-  key_name               = "MYLABKEY" # Change key name as per your setup
+  key_name               = "ESTHER" # Change key name as per your setup
   instance_type          = "t2.large" # Instance type for Terraform VM
   iam_instance_profile   = aws_iam_instance_profile.k8s_cluster_instance_profile.name
   vpc_security_group_ids = [aws_security_group.TerraBox.id]
@@ -85,7 +85,7 @@ resource "aws_instance" "terraform_vm" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("MYLABKEY.pem")
+      private_key = file("ESTHER.pem")
       host        = self.public_ip
     }
   }
@@ -99,7 +99,7 @@ resource "aws_instance" "terraform_vm" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("MYLABKEY.pem")
+      private_key = file("ESTHER.pem")
       host        = self.public_ip
     }
   }
